@@ -10,9 +10,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.listen(3003, () => {
-  console.log(`Servidor rodando na porta ${3003} 🔥`);
-});
+app.listen(Number(process.env.PORT) | 3003, () => {
+  console.log(`Servidor rodando na porta ${Number(process.env.PORT)}`)
+})
 
 app.get("/ping", async (req: Request, res: Response) => {
   try {
