@@ -8,9 +8,9 @@ export interface GetUsersInput {
 export type GetUsersOutput = UserModel[]
 
 export interface SignupInput {
-    name: string,
-    email: string,
-    password: string
+    name: unknown,
+    email: unknown,
+    password: unknown
 }
 
 export interface SignupOutput {

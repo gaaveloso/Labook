@@ -5,7 +5,7 @@ import { User } from "../models/User";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator";
 import { TokenManager } from "../services/TokenManager";
-import { TokenPayload } from "../types";
+import { TokenPayload, USER_ROLES } from "../types";
 
 export class UserBusiness {
     constructor(
@@ -28,6 +28,11 @@ export class UserBusiness {
             throw new BadRequestError("Token Inválido")
         }
 
+        
+        if(payload.role !== USER_ROLES.ADMIN){
+            throw new BadRequestError("Usuario não autorizado")
+        }
+        
         if (typeof q !== "string" && q !== undefined) {
             throw new BadRequestError("'q' deve ser string ou undefined")
         }
@@ -40,6 +45,7 @@ export class UserBusiness {
                 userDB.name,
                 userDB.email,
                 userDB.password,
+                userDB.role,
                 userDB.created_at
             )
 
@@ -75,6 +81,7 @@ export class UserBusiness {
             name,
             email,
             hashedPassword,
+            USER_ROLES.NORMAL,
             new Date().toISOString()
         )
 
@@ -84,6 +91,7 @@ export class UserBusiness {
         const tokenPayload: TokenPayload = {
             id: newUser.getId(),
             name: newUser.getName(),
+            role: newUser.getRole()
         }
 
         const token = this.tokenManager.createToken(tokenPayload)

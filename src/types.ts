@@ -1,6 +1,12 @@
+export enum USER_ROLES {
+    NORMAL = "NORMAL",
+    ADMIN = "ADMIN"
+}
+
 export interface TokenPayload {
     id: string,
-	name: string
+	name: string,
+    role: USER_ROLES,
 }
 
 export interface UserDB {
@@ -8,6 +14,7 @@ export interface UserDB {
     name: string,
     email: string,
     password: string,
+    role: USER_ROLES,
     created_at: string
 }
 
@@ -16,5 +23,6 @@ export interface UserModel {
     name: string,
     email: string,
     password: string,
+    role: USER_ROLES,
     createdAt: string
 }
