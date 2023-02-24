@@ -1,4 +1,4 @@
-import { UserModel } from "../types";
+import { UserModel, PostModel } from "../types";
 
 export interface GetUsersInput {
     q: unknown,
@@ -26,4 +26,31 @@ export interface LoginInput {
 export interface LoginOutput {
     message: string,
     token: string
+}
+
+export interface GetPostsInput {
+    token: string | undefined
+}
+
+export type GetPLaylistOutput = PostModel[]
+
+export interface CreatePostInput {
+    token: string | undefined
+}
+
+export interface EditPostInput {
+    idToEdit: string,
+    token: string | undefined,
+    name: unknown
+}
+
+export interface DeletePostInput {
+    idToDelete: string,
+    token: string | undefined,
+}
+
+export interface LikeOrDeslikePostInput {
+    idToLikeOrDislike: string,
+    token: string | undefined,
+    like: unknown
 }

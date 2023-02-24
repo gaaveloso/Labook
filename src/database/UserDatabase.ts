@@ -31,15 +31,16 @@ export class UserDatabase extends BaseDatabase {
         return userDB
     }
 
-    public async findUserByEmail(email: string) {
+    public async findUserByEmail(email: string): Promise<UserDB | undefined> {
         const [ userDB ]: UserDB[] | undefined[] = await BaseDatabase
             .connection(UserDatabase.TABLE_USERS)
+            .select()
             .where({ email })
 
         return userDB
     }
 
-    public async insertUser(newUserDB: UserDB) {
+    public async insertUser(newUserDB: UserDB): Promise<void> {
         await BaseDatabase
             .connection(UserDatabase.TABLE_USERS)
             .insert(newUserDB)

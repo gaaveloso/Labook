@@ -58,4 +58,6 @@ UPDATE posts
 SET dislikes = 1
 WHERE id = "p003";
 
-SELECT * FROM posts
+SELECT * FROM posts;
+
+SELECT * FROM users;
