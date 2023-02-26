@@ -32,7 +32,7 @@ export interface GetPostsInput {
     token: string | undefined
 }
 
-export type GetPLaylistOutput = PostModel[]
+export type GetPostsOutput = PostModel[]
 
 export interface CreatePostInput {
     token: string | undefined
