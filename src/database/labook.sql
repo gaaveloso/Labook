@@ -72,3 +72,7 @@ JOIN users
 ON posts.creator_id = users.id;
 
 SELECT * FROM users;
+
+SELECT * FROM likes_dislikes;
+
+SELECT * FROM posts;
