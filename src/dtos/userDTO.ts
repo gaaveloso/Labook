@@ -36,12 +36,13 @@ export type GetPostsOutput = PostModel[]
 
 export interface CreatePostInput {
     token: string | undefined
+    content: unknown
 }
 
 export interface EditPostInput {
     idToEdit: string,
     token: string | undefined,
-    name: unknown
+    content: unknown
 }
 
 export interface DeletePostInput {
